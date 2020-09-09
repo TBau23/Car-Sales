@@ -1,4 +1,4 @@
-import { INCREASE_ADDITIONAL_PRICE } from '../actions'
+import { INCREASE_ADDITIONAL_PRICE, ADD_FEATURE, REMOVE_FEATURE } from '../actions'
 
 const initialState = { 
     additionalPrice: 0,
@@ -21,8 +21,35 @@ const initialState = {
 
 export const reducer = (state = initialState, action={}) => {
     switch(action.type) {
-        case INCREASE_ADDITIONAL_PRICE:
+        case INCREASE_ADDITIONAL_PRICE: // this was just an experiment to make sure I understood how to wire things 
             return {...state, additionalPrice: state.additionalPrice + 100}
+        case ADD_FEATURE:
+            // Take selected feature by ID
+            // filter out additionalFeatures by ID selected
+            // add to features
+            return {
+                ...state, 
+                additionalFeatures: state.additionalFeatures.filter(
+                    (feature) => feature.id !== action.payload.id
+                ),
+                car: {
+                    ...state.car,
+                    features: [...state.car.features, action.payload]
+                }
+            }
+        case REMOVE_FEATURE:
+            return {
+                ...state,
+                car: {
+                    ...state.car,
+                    features: state.car.features.filter(
+                        feature => feature.id !== action.payload.id
+                    )
+                    
+                },
+                additionalFeatures: [...state.additionalFeatures, action.payload]
+            }
+
         default:
             return state
     }

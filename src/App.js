@@ -32,17 +32,18 @@ const App = (props) => {
     props.increaseAdditionalPrice()
     
 }
+
   
 console.log(state.car.price)
   return (
     <div className="boxes">
       <div className="box">
-        <Header car={state.car} />
-        <AddedFeatures car={state.car} />
+        <Header car={props.car} />
+        <AddedFeatures car={props.car} />
       </div>
       <div className="box">
-        <AdditionalFeatures additionalFeatures={state.additionalFeatures} />
-        <Total car={state.car} additionalPrice={props.additionalPrice} />
+        <AdditionalFeatures additionalFeatures={props.additionalFeatures} />
+        <Total car={props.car} additionalPrice={props.additionalPrice} />
         <button onClick={incrementBy100}>Increase Price by 100</button>
       </div>
     </div>
@@ -51,7 +52,9 @@ console.log(state.car.price)
 
 const mapStateToProps = state => {
   return {
-    additionalPrice: state.additionalPrice
+    additionalPrice: state.additionalPrice,
+    car: state.car,
+    additionalFeatures: state.additionalFeatures
   }
 }
 
