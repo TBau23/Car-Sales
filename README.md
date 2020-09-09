@@ -22,7 +22,6 @@ In this project you will implement Redux to manage the state for this React appl
 - You will be starting with a structured and styled app
 - You have been commissioned to implement Redux as the state management system in this app
 - You have the freedom to manage the state how you would like - ie, connecting multiple components to pass data directly to them, or maybe connecting one component, and then putting the data into a context object.
-
 ## Instructions
 
 ### Task 1: Project Setup
