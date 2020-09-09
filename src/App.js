@@ -4,9 +4,10 @@ import Header from './components/Header';
 import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
-
-import { increaseAdditionalPrice } from './actions'
 import { connect } from 'react-redux'
+
+
+
 
 
 const App = (props) => {
@@ -26,13 +27,6 @@ const App = (props) => {
       { id: 4, name: 'Rear spoiler', price: 250 }
     ]
   };
-
-  const incrementBy100 = e => {
-    e.preventDefault()
-    props.increaseAdditionalPrice()
-    
-}
-
   
 console.log(state.car.price)
   return (
@@ -44,7 +38,6 @@ console.log(state.car.price)
       <div className="box">
         <AdditionalFeatures additionalFeatures={props.additionalFeatures} />
         <Total car={props.car} additionalPrice={props.additionalPrice} />
-        <button onClick={incrementBy100}>Increase Price by 100</button>
       </div>
     </div>
   );
@@ -58,4 +51,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {increaseAdditionalPrice})(App);
+export default connect(mapStateToProps, {})(App);
